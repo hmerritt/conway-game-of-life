@@ -31,3 +31,10 @@ export const createMatrix = (y = 25, x = 25, valueCb = () => 0) => {
 export const randomBinary = () => {
     return Math.round(Math.random());
 }
+
+/*
+ * Returns true if array index exists
+ */
+export const arrayIndexExists = (array, index) => {
+    return Array.isArray(array) && array.hasOwnProperty(index);
+}
