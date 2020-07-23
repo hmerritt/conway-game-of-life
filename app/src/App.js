@@ -16,6 +16,14 @@ function App() {
         setMatrix(nextGeneration(matrix))
     }
 
+    const handleClearMatrix = () => {
+        setMatrix(createMatrix(matrixSize, matrixSize, () => 0));
+    }
+
+    const handleRandomizeMatrix = () => {
+        setMatrix(createMatrix(matrixSize, matrixSize, randomBinary));
+    }
+
     // Toggle cell value
     const toggleCellValue = (cell) => {
         const newMatrix = [...matrix];
@@ -26,7 +34,7 @@ function App() {
 
     // Generate matrix and populate with random bits
     useEffect(() => {
-        setMatrix(createMatrix(matrixSize, matrixSize, randomBinary));
+        handleRandomizeMatrix();
     }, [matrixSize]);
 
     return (
@@ -59,6 +67,8 @@ function App() {
                 </div>
 
                 <button onClick={handleNextGeneration}>Next State</button>
+                <button onClick={handleClearMatrix}>Clear Grid</button>
+                <button onClick={handleRandomizeMatrix}>Randomize</button>
             </div>
         </div>
     );
