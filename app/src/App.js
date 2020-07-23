@@ -1,26 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { createMatrix } from "./utils/matrix";
+import { createMatrix, randomBinary } from "./utils/matrix";
 
 function App() {
 
     // Grid matrix
-    const [matrix, setMatrix] = useState(createMatrix());
+    const [matrix, setMatrix] = useState([[]]);
 
-    console.log(createMatrix());
+    // Generate matrix and populate with random bits
+    useEffect(() => {
+        setMatrix(createMatrix(25, 25, randomBinary));
+    }, []);
+
+    useEffect(() => {
+        console.log(matrix);
+    }, [matrix]);
 
     return (
         <div className="App">
             <h1>Game Of Life</h1>
-            {
-                matrix.map((valY, indexY) => {
-                    return [...matrix[indexY].map((valX, indexX) => {
-                        return (
-                            <div className="cell">{matrix[indexY][indexX]} </div>
-                        );
-                    }), <><br /></>]
-                })
-            }
+
+            <div className="table">
+                {
+                    matrix.map((valY, indexY) => {
+                        return [...matrix[indexY].map((valX, indexX) => {
+                            return (
+                                <div className={`cell${matrix[indexY][indexX] ? " active" : ""}`}></div>
+                            );
+                        }), <><br /></>]
+                    })
+                }
+            </div>
         </div>
     );
 }
