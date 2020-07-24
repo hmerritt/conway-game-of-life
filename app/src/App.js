@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useInterval } from "./hooks/useInterval";
 
 import { nextGeneration } from "./utils/game-of-life";
 import { createMatrix, randomBinary } from "./utils/matrix";
@@ -10,26 +11,35 @@ function App() {
     // Grid matrix
     const [matrix, setMatrix] = useState([[]]);
     const [matrixSize, setMatrixSize] = useState(25);
+    const [isRunning, setIsRunning] = useState(false);
 
-    //
+    const handleToggleRunning = () => {
+        setIsRunning(!isRunning);
+    }
+
     const handleNextGeneration = () => {
         setMatrix(nextGeneration(matrix))
     }
 
     const handleClearMatrix = () => {
+        setIsRunning(false);
         setMatrix(createMatrix(matrixSize, matrixSize, () => 0));
     }
 
     const handleRandomizeMatrix = () => {
+        setIsRunning(false);
         setMatrix(createMatrix(matrixSize, matrixSize, randomBinary));
     }
 
     // Toggle cell value
     const toggleCellValue = (cell) => {
-        const newMatrix = [...matrix];
-        const cellValue = newMatrix[ cell[0] ][ cell[1] ];
-        newMatrix[ cell[0] ][ cell[1] ] = !cellValue ? 1 : 0;
-        setMatrix(newMatrix);
+        // Only toggle value if not running
+        if (!isRunning) {
+            const newMatrix = [...matrix];
+            const cellValue = newMatrix[ cell[0] ][ cell[1] ];
+            newMatrix[ cell[0] ][ cell[1] ] = !cellValue ? 1 : 0;
+            setMatrix(newMatrix);
+        }
     }
 
     // Generate matrix and populate with random bits
@@ -37,8 +47,13 @@ function App() {
         handleRandomizeMatrix();
     }, [matrixSize]);
 
+    useInterval(() => {
+        if (isRunning && matrix[0].length > 0)
+            handleNextGeneration();
+    }, 200);
+
     return (
-        <div className="App" onClick={() => { /*setMatrix(nextGeneration(matrix))*/ }}>
+        <div className="App">
             <div className="container">
                 <h1>Game Of Life</h1>
                 <h2>{matrixSize} x {matrixSize}</h2>
@@ -66,6 +81,7 @@ function App() {
                     }
                 </div>
 
+                <button onClick={handleToggleRunning}>{isRunning ? "Stop" : "Start"}</button>
                 <button onClick={handleNextGeneration}>Next State</button>
                 <button onClick={handleClearMatrix}>Clear Grid</button>
                 <button onClick={handleRandomizeMatrix}>Randomize</button>
