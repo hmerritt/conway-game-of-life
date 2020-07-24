@@ -12,3 +12,5 @@
 - [ ] Templates for avatars
 - [ ] Change size of grid on-the-fly
 - [ ] Jump n states
+- [ ] Change color of living cells
+- [ ] Message to indicate when an end state has been achieved (previous generation == current generation)
