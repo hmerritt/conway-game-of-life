@@ -10,7 +10,7 @@ function App() {
 
     // Grid matrix
     const [matrix, setMatrix] = useState([[]]);
-    const [matrixSize, setMatrixSize] = useState(25);
+    const [matrixSize, setMatrixSize] = useState(28);
     const [generation, setGeneration] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
@@ -63,35 +63,37 @@ function App() {
         <div className="App">
             <div className="container">
                 <h1>Game Of Life</h1>
-                <h2>{matrixSize} x {matrixSize} : Generation {generation}</h2>
+                <h2>Grid {matrixSize}<sup>2</sup> : Generation {generation}</h2>
 
-                <div className="grid">
-                    {
-                        matrix.map((valY, indexY) => {
-                            return (
-                                <div className="grid-row" key={indexY}>
-                                    {
-                                        matrix[indexY].map((valX, indexX) => {
-                                            return (
-                                                <Cell
-                                                    cell={[indexY, indexX]}
-                                                    living={matrix[indexY][indexX]}
-                                                    toggleCellValue={toggleCellValue}
-                                                    key={indexY + indexX}
-                                                />
-                                            )
-                                        })
-                                    }
-                                </div>
-                            )
-                        })
-                    }
+                <div className="grid-buttons">
+                    <button onClick={handleToggleRunning}>{isRunning ? "Stop" : "Start"}</button>
+                    <button onClick={handleNextGeneration}>Next State</button>
+                    <button onClick={handleClearMatrix}>Clear Grid</button>
+                    <button onClick={handleRandomizeMatrix}>Randomize</button>
                 </div>
+            </div>
 
-                <button onClick={handleToggleRunning}>{isRunning ? "Stop" : "Start"}</button>
-                <button onClick={handleNextGeneration}>Next State</button>
-                <button onClick={handleClearMatrix}>Clear Grid</button>
-                <button onClick={handleRandomizeMatrix}>Randomize</button>
+            <div className="grid">
+                {
+                    matrix.map((valY, indexY) => {
+                        return (
+                            <div className="grid-row" key={indexY}>
+                                {
+                                    matrix[indexY].map((valX, indexX) => {
+                                        return (
+                                            <Cell
+                                                cell={[indexY, indexX]}
+                                                living={matrix[indexY][indexX]}
+                                                toggleCellValue={toggleCellValue}
+                                                key={indexY + indexX}
+                                            />
+                                        )
+                                    })
+                                }
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     );

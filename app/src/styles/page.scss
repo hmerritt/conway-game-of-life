@@ -5,27 +5,39 @@
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-}
+    margin: 50px 0;
 
-.grid-row {
-    display: flex;
-    flex-wrap: nowrap;
-    border-top: 1px solid $cell-border;
-    border-left: 1px solid $cell-border;
+    .grid-row {
+        display: flex;
+        flex-wrap: nowrap;
+        border-top: 1px solid $cell-border;
+        border-left: 1px solid $cell-border;
 
-    &:last-of-type {
-        border-bottom: 1px solid $cell-border;
+        &:last-of-type {
+            border-bottom: 1px solid $cell-border;
+        }
+
+        .cell {
+            position: relative;
+            width: 22px;
+            height: 22px;
+            margin: 0px;
+            border-right: 1px solid $cell-border;
+
+            &.living {
+                background-color: $cell-bg;
+            }
+        }
     }
 }
 
-.cell {
-    position: relative;
-    width: 22px;
-    height: 22px;
-    margin: 0px;
-    border-right: 1px solid $cell-border;
+.grid-buttons {
+    margin-top: 40px;
 
-    &.living {
-        background-color: $cell-bg;
+    button {
+        position: relative;
+        margin: 0 5px;
+        padding: 6px 14px;
+        font-size: 1.4rem;
     }
 }
