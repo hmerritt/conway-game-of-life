@@ -11,6 +11,7 @@ function App() {
     // Grid matrix
     const [matrix, setMatrix] = useState([[]]);
     const [matrixSize, setMatrixSize] = useState(25);
+    const [generation, setGeneration] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
     const handleToggleRunning = () => {
@@ -19,15 +20,21 @@ function App() {
 
     const handleNextGeneration = () => {
         setMatrix(nextGeneration(matrix))
+        setGeneration(generation + 1);
+    }
+
+    const handleReset = () => {
+        setIsRunning(false);
+        setGeneration(0);
     }
 
     const handleClearMatrix = () => {
-        setIsRunning(false);
+        handleReset();
         setMatrix(createMatrix(matrixSize, matrixSize, () => 0));
     }
 
     const handleRandomizeMatrix = () => {
-        setIsRunning(false);
+        handleReset();
         setMatrix(createMatrix(matrixSize, matrixSize, randomBinary));
     }
 
@@ -56,7 +63,7 @@ function App() {
         <div className="App">
             <div className="container">
                 <h1>Game Of Life</h1>
-                <h2>{matrixSize} x {matrixSize}</h2>
+                <h2>{matrixSize} x {matrixSize} : Generation {generation}</h2>
 
                 <div className="grid">
                     {
