@@ -10,18 +10,22 @@
 .grid-row {
     display: flex;
     flex-wrap: nowrap;
-    /* width: 100%; */
+    border-top: 1px solid $cell-border;
+    border-left: 1px solid $cell-border;
+
+    &:last-of-type {
+        border-bottom: 1px solid $cell-border;
+    }
 }
 
-div.cell {
-    display: inline-block;
+.cell {
     position: relative;
-    width: 20px;
-    height: 20px;
-    margin: 1px;
-    border: 1px solid #000;
-}
+    width: 22px;
+    height: 22px;
+    margin: 0px;
+    border-right: 1px solid $cell-border;
 
-div.cell.living {
-    background-color: red;
+    &.living {
+        background-color: $cell-bg;
+    }
 }
