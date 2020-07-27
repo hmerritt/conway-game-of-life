@@ -3,6 +3,7 @@
     "version": "0.1.2",
     "private": true,
     "dependencies": {
+        "@fluentui/react": "^7.123.9",
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
