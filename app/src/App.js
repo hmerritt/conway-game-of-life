@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Text } from "@fluentui/react";
 import { useInterval } from "./hooks/useInterval";
 
 import { nextGeneration } from "./utils/game-of-life";
 import { createMatrix, randomBinary } from "./utils/matrix";
 
 import Button from "./components/Button";
+import Stat from "./components/Stat";
 import Cell from "./components/Cell";
 
 function App() {
@@ -63,8 +65,22 @@ function App() {
     return (
         <div className="App">
             <div className="container">
-                <h1>Game Of Life</h1>
-                <h2>Grid {matrixSize}<sup>2</sup> : Generation {generation}</h2>
+                <Text className="title" variant={"xxLarge"} block nowrap>
+                    Game Of Life
+                </Text>
+
+                <div className="stats">
+                    <Stat
+                        name="gridsize"
+                        title="Grid size"
+                        value={<>{matrixSize}<sup>2</sup></>}
+                    />
+                    <Stat
+                        name="generation"
+                        title="Generation"
+                        value={<>{generation}</>}
+                    />
+                </div>
 
                 <div className="grid-buttons">
                     <Button
