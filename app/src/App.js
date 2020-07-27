@@ -4,6 +4,7 @@ import { useInterval } from "./hooks/useInterval";
 import { nextGeneration } from "./utils/game-of-life";
 import { createMatrix, randomBinary } from "./utils/matrix";
 
+import Button from "./components/Button";
 import Cell from "./components/Cell";
 
 function App() {
@@ -66,10 +67,26 @@ function App() {
                 <h2>Grid {matrixSize}<sup>2</sup> : Generation {generation}</h2>
 
                 <div className="grid-buttons">
-                    <button onClick={handleToggleRunning}>{isRunning ? "Stop" : "Start"}</button>
-                    <button onClick={handleNextGeneration}>Next State</button>
-                    <button onClick={handleClearMatrix}>Clear Grid</button>
-                    <button onClick={handleRandomizeMatrix}>Randomize</button>
+                    <Button
+                        text={isRunning ? "Stop" : "Start"}
+                        action={handleToggleRunning}
+                        primary={true}
+                    />
+                    <Button
+                        text={"Next State"}
+                        action={handleNextGeneration}
+                        disabled={isRunning ? true : false}
+                    />
+                    <Button
+                        text={"Randomize"}
+                        action={handleRandomizeMatrix}
+                        disabled={isRunning ? true : false}
+                    />
+                    <Button
+                        text={"Clear Grid"}
+                        action={handleClearMatrix}
+                        disabled={isRunning ? true : false}
+                    />
                 </div>
             </div>
 
