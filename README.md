@@ -8,9 +8,10 @@
 - [x] Calculate next state of a given grid
 - [x] Populate grid randomly
 - [x] Clear grid
-- [ ] Continuously 'play' game of life
-- [ ] Templates for avatars
+- [x] Continuously 'play' game of life
 - [ ] Change size of grid on-the-fly
-- [ ] Jump n states
 - [ ] Change color of living cells
+- [ ] Jump n states
+- [ ] Templates for avatars
+- [ ] Optimize matrix configuration
 - [ ] Message to indicate when an end state has been achieved (previous generation == current generation)
