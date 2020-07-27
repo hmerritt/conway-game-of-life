@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Text } from "@fluentui/react";
 import { useInterval } from "./hooks/useInterval";
 
 import { nextGeneration } from "./utils/game-of-life";
 import { createMatrix, randomBinary } from "./utils/matrix";
 
+import Button from "./components/Button";
+import Stat from "./components/Stat";
 import Cell from "./components/Cell";
 
 function App() {
@@ -62,14 +65,44 @@ function App() {
     return (
         <div className="App">
             <div className="container">
-                <h1>Game Of Life</h1>
-                <h2>Grid {matrixSize}<sup>2</sup> : Generation {generation}</h2>
+                <Text className="title" variant={"xxLarge"} block nowrap>
+                    Game Of Life
+                </Text>
+
+                <div className="stats">
+                    <Stat
+                        name="gridsize"
+                        title="Grid size"
+                        value={<>{matrixSize}<sup>2</sup></>}
+                    />
+                    <Stat
+                        name="generation"
+                        title="Generation"
+                        value={<>{generation}</>}
+                    />
+                </div>
 
                 <div className="grid-buttons">
-                    <button onClick={handleToggleRunning}>{isRunning ? "Stop" : "Start"}</button>
-                    <button onClick={handleNextGeneration}>Next State</button>
-                    <button onClick={handleClearMatrix}>Clear Grid</button>
-                    <button onClick={handleRandomizeMatrix}>Randomize</button>
+                    <Button
+                        text={isRunning ? "Stop" : "Start"}
+                        action={handleToggleRunning}
+                        primary={true}
+                    />
+                    <Button
+                        text={"Next State"}
+                        action={handleNextGeneration}
+                        disabled={isRunning ? true : false}
+                    />
+                    <Button
+                        text={"Randomize"}
+                        action={handleRandomizeMatrix}
+                        disabled={isRunning ? true : false}
+                    />
+                    <Button
+                        text={"Clear Grid"}
+                        action={handleClearMatrix}
+                        disabled={isRunning ? true : false}
+                    />
                 </div>
             </div>
 
