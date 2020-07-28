@@ -92,6 +92,7 @@ function App() {
                         value={matrixSize}
                         onChange={setMatrixSize}
                         showValue
+                        valueFormat={(value) => <>{value}<sup>2</sup></>}
                     />
 
                     <Slider
@@ -101,6 +102,7 @@ function App() {
                         value={simSpeed}
                         onChange={setSimSpeed}
                         showValue
+                        valueFormat={(value) => `${value}%`}
                     />
                 </div>
 
