@@ -35,6 +35,26 @@
     }
 }
 
+.sliders {
+    max-width: 700px;
+    margin-top: 28px;
+
+    .ms-Slider {
+        margin-top: 10px;
+    }
+}
+
+.grid-buttons {
+    margin-top: 28px;
+
+    button {
+        position: relative;
+        margin: 0 5px;
+        padding: 6px 14px;
+        font-size: 1.4rem;
+    }
+}
+
 .grid {
     display: flex;
     align-items: center;
@@ -64,16 +84,5 @@
                 background-color: $cell-bg;
             }
         }
-    }
-}
-
-.grid-buttons {
-    margin-top: 40px;
-
-    button {
-        position: relative;
-        margin: 0 5px;
-        padding: 6px 14px;
-        font-size: 1.4rem;
     }
 }

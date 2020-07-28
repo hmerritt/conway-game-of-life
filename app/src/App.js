@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text } from "@fluentui/react";
+import { Text, Slider } from "@fluentui/react";
 import { useInterval } from "./hooks/useInterval";
 
 import { nextGeneration } from "./utils/game-of-life";
@@ -13,7 +13,9 @@ function App() {
 
     // Grid matrix
     const [matrix, setMatrix] = useState([[]]);
-    const [matrixSize, setMatrixSize] = useState(28);
+    const [matrixSize, setMatrixSize] = useState(25);
+
+    const [simSpeed, setSimSpeed] = useState(50);
     const [generation, setGeneration] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
@@ -60,7 +62,7 @@ function App() {
     useInterval(() => {
         if (isRunning && matrix[0].length > 0)
             handleNextGeneration();
-    }, 200);
+    }, 10000 / simSpeed);
 
     return (
         <div className="App">
@@ -79,6 +81,26 @@ function App() {
                         name="generation"
                         title="Generation"
                         value={<>{generation}</>}
+                    />
+                </div>
+
+                <div className="sliders">
+                    <Slider
+                        label="Grid Size"
+                        min={2}
+                        max={100}
+                        value={matrixSize}
+                        onChange={setMatrixSize}
+                        showValue
+                    />
+
+                    <Slider
+                        label="Game Speed"
+                        min={1}
+                        max={100}
+                        value={simSpeed}
+                        onChange={setSimSpeed}
+                        showValue
                     />
                 </div>
 

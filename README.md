@@ -9,7 +9,8 @@
 - [x] Populate grid randomly
 - [x] Clear grid
 - [x] Continuously 'play' game of life
-- [ ] Change size of grid on-the-fly
+- [x] Change size of grid on-the-fly
+- [x] Change game speed on-the-fly
 - [ ] Change color of living cells
 - [ ] Jump n states
 - [ ] Templates for avatars
