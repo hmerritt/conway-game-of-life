@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, Slider } from "@fluentui/react";
+import { Text, Slider, initializeIcons } from "@fluentui/react";
 import { useInterval } from "./hooks/useInterval";
 
 import { nextGeneration } from "./utils/game-of-life";
@@ -9,6 +9,7 @@ import Button from "./components/Button";
 import Stat from "./components/Stat";
 import Cell from "./components/Cell";
 import Rules from "./components/Rules";
+import Presets from "./components/Presets";
 
 function App() {
 
@@ -59,6 +60,10 @@ function App() {
     useEffect(() => {
         handleRandomizeMatrix();
     }, [matrixSize]);
+
+    useEffect(() => {
+        initializeIcons();
+    }, []);
 
     useInterval(() => {
         if (isRunning && matrix[0].length > 0)
@@ -128,6 +133,7 @@ function App() {
                         action={handleClearMatrix}
                         disabled={isRunning ? true : false}
                     />
+                    <Presets matrixSize={matrixSize} setMatrix={setMatrix} />
                     <Rules />
                 </div>
             </div>

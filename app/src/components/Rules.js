@@ -39,6 +39,7 @@ function Rules(props) {
                 id="button-rules"
                 onClick={toggleIsVisible}
                 text={isVisible ? "Hide Rules" : "Show Rules"}
+                // style={{color: "#ffffff", backgroundColor: "#0078D4", borderColor: "#0078D4"}}
             />
 
             {isVisible && (

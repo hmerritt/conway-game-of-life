@@ -45,6 +45,9 @@
 }
 
 .grid-buttons {
+    @include flex();
+    align-items: center;
+    flex-wrap: nowrap;
     margin-top: 28px;
 
     button {
@@ -56,7 +59,7 @@
 }
 
 .grid {
-    display: flex;
+    @include flex();
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -64,7 +67,7 @@
     margin: 50px 0;
 
     .grid-row {
-        display: flex;
+        @include flex();
         flex-wrap: nowrap;
         border-top: 1px solid $cell-border;
         border-left: 1px solid $cell-border;

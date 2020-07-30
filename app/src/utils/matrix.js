@@ -16,7 +16,8 @@ export const createMatrix = (y = 25, x = 25, valueCb = () => 0) => {
         const arrX = [];
 
         for (let stepX = 0; stepX < x; stepX++) {
-            arrX.push(valueCb());
+            const count = (y * stepY) + stepX;
+            arrX.push(valueCb(count, [stepY, stepX]));
         }
 
         matrix.push(arrX);
