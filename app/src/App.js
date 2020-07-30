@@ -8,6 +8,7 @@ import { createMatrix, randomBinary } from "./utils/matrix";
 import Button from "./components/Button";
 import Stat from "./components/Stat";
 import Cell from "./components/Cell";
+import Rules from "./components/Rules";
 
 function App() {
 
@@ -127,6 +128,7 @@ function App() {
                         action={handleClearMatrix}
                         disabled={isRunning ? true : false}
                     />
+                    <Rules />
                 </div>
             </div>
 
