@@ -1,4 +1,12 @@
-import { createMatrix } from "./matrix";
+import { createMatrix, randomBinary } from "./matrix";
+
+export const cross = (size) => {
+    return createMatrix(size, size, (count, steps) => {
+        if (steps[0] === steps[1]) return 1;
+        if ((size - steps[0]) === steps[1]+1) return 1;
+        return 0;
+    });
+}
 
 export const even = (size) => {
     return createMatrix(size, size, (count) => {
@@ -14,10 +22,6 @@ export const odd = (size) => {
     });
 }
 
-export const cross = (size) => {
-    return createMatrix(size, size, (count, steps) => {
-        if (steps[0] === steps[1]) return 1;
-        if ((size - steps[0]) === steps[1]+1) return 1;
-        return 0;
-    });
+export const randomize = (size) => {
+    return createMatrix(size, size, randomBinary);
 }

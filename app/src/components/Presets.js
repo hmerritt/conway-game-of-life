@@ -1,28 +1,33 @@
 import React from "react";
 import { CommandButton, IContextualMenuProps, IIconProps } from "@fluentui/react";
 
-import { even, odd, cross } from "../utils/matrixPresets";
+import { cross, even, odd, randomize } from "../utils/matrixPresets";
 
-function Presets({ matrixSize, setMatrix, disabled }) {
+function Presets({ matrixSize, setMatrix, handleReset, disabled }) {
 
     const addIcon: IIconProps = { iconName: 'Add' };
 
     const menuProps: IContextualMenuProps = {
         items: [
             {
+                key: "cross",
+                text: "Cross",
+                onClick: () => {handleReset(); setMatrix(cross(matrixSize))}
+            },
+            {
                 key: "even",
                 text: "Even",
-                onClick: () => {setMatrix( even(matrixSize) )}
+                onClick: () => {handleReset(); setMatrix(even(matrixSize))}
             },
             {
                 key: "odd",
                 text: "Odd",
-                onClick: () => {setMatrix( odd(matrixSize) )}
+                onClick: () => {handleReset(); setMatrix(odd(matrixSize))}
             },
             {
-                key: "cross",
-                text: "Cross",
-                onClick: () => {setMatrix( cross(matrixSize) )}
+                key: "randomize",
+                text: "Randomize",
+                onClick: () => {handleReset(); setMatrix(randomize(matrixSize))}
             },
         ],
     };

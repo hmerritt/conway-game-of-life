@@ -3,7 +3,8 @@ import { Text, Slider, initializeIcons } from "@fluentui/react";
 import { useInterval } from "./hooks/useInterval";
 
 import { nextGeneration } from "./utils/game-of-life";
-import { createMatrix, randomBinary } from "./utils/matrix";
+import { createMatrix } from "./utils/matrix";
+import { randomize } from "./utils/matrixPresets";
 
 import Button from "./components/Button";
 import Stat from "./components/Stat";
@@ -42,7 +43,7 @@ function App() {
 
     const handleRandomizeMatrix = () => {
         handleReset();
-        setMatrix(createMatrix(matrixSize, matrixSize, randomBinary));
+        setMatrix(randomize(matrixSize));
     }
 
     // Toggle cell value
@@ -124,17 +125,12 @@ function App() {
                         disabled={isRunning ? true : false}
                     />
                     <Button
-                        text={"Randomize"}
-                        action={handleRandomizeMatrix}
-                        disabled={isRunning ? true : false}
-                    />
-                    <Button
                         text={"Clear Grid"}
                         action={handleClearMatrix}
                         disabled={isRunning ? true : false}
                     />
                     <Presets
-                        matrixSize={matrixSize} setMatrix={setMatrix}
+                        matrixSize={matrixSize} setMatrix={setMatrix} handleReset={handleReset}
                         disabled={isRunning ? true : false}
                     />
                     <Rules />
