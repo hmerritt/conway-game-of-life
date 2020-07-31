@@ -3,7 +3,7 @@ import { CommandButton, IContextualMenuProps, IIconProps } from "@fluentui/react
 
 import { even, odd, cross } from "../utils/matrixPresets";
 
-function Presets({ matrixSize, setMatrix }) {
+function Presets({ matrixSize, setMatrix, disabled }) {
 
     const addIcon: IIconProps = { iconName: 'Add' };
 
@@ -33,9 +33,8 @@ function Presets({ matrixSize, setMatrix }) {
                 iconProps={addIcon}
                 text="Presets"
                 menuProps={menuProps}
-                disabled={false}
+                disabled={disabled}
                 checked={false}
-                style={{height: "32px", border: "1px solid rgb(138, 136, 134)"}}
             />
         </>
     );

@@ -44,6 +44,16 @@
     }
 }
 
+.ms-Button--command {
+    height: 32px;
+    border: 1px solid rgb(138, 136, 134);
+
+    &.is-disabled {
+        border: 1px solid rgb(255, 255, 255);
+        background-color: rgb(243, 242, 241);
+    }
+}
+
 .grid-buttons {
     @include flex();
     align-items: center;

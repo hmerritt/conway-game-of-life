@@ -133,7 +133,10 @@ function App() {
                         action={handleClearMatrix}
                         disabled={isRunning ? true : false}
                     />
-                    <Presets matrixSize={matrixSize} setMatrix={setMatrix} />
+                    <Presets
+                        matrixSize={matrixSize} setMatrix={setMatrix}
+                        disabled={isRunning ? true : false}
+                    />
                     <Rules />
                 </div>
             </div>
